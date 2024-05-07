@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:parallax_travel_cards_list/city_details_page.dart';
 import 'package:parallax_travel_cards_list/city_scenery.dart';
 import 'package:parallax_travel_cards_list/components/white_page_route.dart';
+import 'package:parallax_travel_cards_list/hotel_list_renderer.dart';
 import 'package:parallax_travel_cards_list/models/city_data.dart';
 import 'package:parallax_travel_cards_list/models/demo_data.dart';
 import 'package:parallax_travel_cards_list/styles.dart';
@@ -24,7 +25,8 @@ class HeroCardDemo extends StatelessWidget {
                   _buildHeader(),
                   Padding(
                       padding: EdgeInsets.symmetric(vertical: 50),
-                      child: _buildCityCard(context))
+                      child: _buildCityCard(context)),
+                  HotelListRenderer(city.hotels),
                 ]),
           ),
         )));
@@ -35,7 +37,8 @@ class HeroCardDemo extends StatelessWidget {
       child: GestureDetector(
         onTap: () => _handlePressedBtn(context),
         child: Container(
-          constraints: BoxConstraints(//para establecer el max y el min
+          constraints: BoxConstraints(
+              //para establecer el max y el min
               maxHeight: MediaQuery.of(context).size.height * .44,
               maxWidth: 300),
           child: Hero(tag: '${city.name}-hero', child: CityScenery(city: city)),
